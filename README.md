@@ -1,4 +1,3 @@
-Code tạo web
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -95,7 +94,6 @@ font-size:14px;
 }
 nav a:hover{color:#c58b45;}
 
-/* HERO */
 .hero{
 height:100vh;
 background:
@@ -360,7 +358,7 @@ revealCards();
 
 <!-- NAV -->
 <nav>
-<h1>CF Toss</h1>
+<h1>Coffee Toss</h1>
 <div>
 <a href="#about">Giới thiệu</a>
 <a href="#menu">Menu</a>
