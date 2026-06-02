@@ -1,106 +1,27 @@
+Code tạo web
 <html lang="vi">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Coffee Toss</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+/* CARD HIỆN KHI CUỘN */
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
+.card{
+opacity:0;
+transform:translateY(40px);
+transition:0.8s;
 }
 
-body{
-background:linear-gradient(-45deg,#f6f1ea,#fff8f0,#f8efe5,#f6f1ea);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
-overflow-x:hidden;
-color:#2b2b2b;
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* FLOATING COFFEE */
-
-.beans span{
-position:fixed;
-font-size:28px;
-opacity:.15;
-z-index:-1;
-animation:floatBean linear infinite;
-}
-
-.beans span:nth-child(1){
-left:5%;
-animation-duration:15s;
-}
-
-.beans span:nth-child(2){
-left:20%;
-animation-duration:20s;
-animation-delay:2s;
-}
-
-.beans span:nth-child(3){
-left:40%;
-animation-duration:17s;
-animation-delay:4s;
-}
-
-.beans span:nth-child(4){
-left:60%;
-animation-duration:22s;
-animation-delay:1s;
-}
-
-.beans span:nth-child(5){
-left:80%;
-animation-duration:18s;
-animation-delay:6s;
-}
-
-.beans span:nth-child(6){
-left:92%;
-animation-duration:25s;
-animation-delay:3s;
-}
-
-@keyframes floatBean{
-0%{
-top:110%;
-transform:rotate(0deg);
-}
-100%{
-top:-10%;
-transform:rotate(360deg);
-}
-}
-
-/* NAV */
+/* NAVBAR ĐỔI MÀU */
 
 nav{
-position:fixed;
-top:0;
-width:100%;
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(10px);
-z-index:999;
 transition:.4s;
 }
 
@@ -108,25 +29,73 @@ nav.scrolled{
 background:#1e120b;
 }
 
-nav h1{
-color:#fff;
-font-size:28px;
+/* HERO HIỆN MƯỢT */
+
+.hero div{
+animation:fadeUp 1.2s ease;
 }
 
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* NÚT PHÁT SÁNG */
+
+.btn{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{
+box-shadow:0 0 0 rgba(197,139,69,.4);
+}
+50%{
+box-shadow:0 0 20px rgba(197,139,69,.8);
+}
+100%{
+box-shadow:0 0 0 rgba(197,139,69,.4);
+}
+}
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;scroll-behavior:smooth;}
+
+body{
+background:#f6f1ea;
+color:#2b2b2b;
+}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+nav h1{color:#fff;}
 nav a{
 color:#fff;
+margin-left:18px;
 text-decoration:none;
-margin-left:20px;
 font-size:14px;
-transition:.3s;
 }
-
-nav a:hover{
-color:#c58b45;
-}
+nav a:hover{color:#c58b45;}
 
 /* HERO */
-
 .hero{
 height:100vh;
 background:
@@ -135,173 +104,70 @@ url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1600');
 background-size:cover;
 background-position:center;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
+color:white;
 padding:20px;
-position:relative;
-overflow:hidden;
 }
 
-.hero-content{
-color:#fff;
-animation:fadeUp 1.5s ease;
-position:relative;
-}
-
-.hero h2{
-font-size:70px;
-animation:glow 2s infinite alternate;
-}
-
-.hero p{
-margin-top:15px;
-font-size:18px;
-opacity:.9;
-}
-
-@keyframes glow{
-from{
-text-shadow:0 0 10px #c58b45;
-}
-to{
-text-shadow:
-0 0 20px #c58b45,
-0 0 40px #c58b45;
-}
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* STEAM */
-
-.steam{
-position:absolute;
-width:10px;
-height:80px;
-background:rgba(255,255,255,.25);
-border-radius:50%;
-top:35%;
-left:50%;
-filter:blur(8px);
-animation:steam 3s infinite;
-}
-
-.s2{
-left:47%;
-animation-delay:1s;
-}
-
-.s3{
-left:53%;
-animation-delay:2s;
-}
-
-@keyframes steam{
-0%{
-opacity:0;
-transform:translateY(0);
-}
-50%{
-opacity:1;
-}
-100%{
-opacity:0;
-transform:translateY(-100px);
-}
-}
-
-/* BUTTON */
+.hero h2{font-size:60px;}
+.hero p{font-size:18px;margin-top:10px;opacity:.9;}
 
 .btn{
 display:inline-block;
-margin-top:25px;
-padding:14px 32px;
-border:none;
+margin-top:20px;
+padding:12px 28px;
+background:#c58b45;
+color:white;
 border-radius:40px;
-background:linear-gradient(135deg,#c58b45,#e2b36a);
-color:#fff;
-font-size:16px;
-font-weight:600;
 text-decoration:none;
-cursor:pointer;
 transition:.3s;
-box-shadow:0 10px 20px rgba(0,0,0,.2);
-animation:pulse 2s infinite;
 }
-
-.btn:hover{
-transform:translateY(-4px);
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.04);}
-100%{transform:scale(1);}
-}
+.btn:hover{transform:scale(1.05);}
 
 /* SECTION */
-
 section{
-max-width:1200px;
+max-width:1100px;
 margin:auto;
 padding:100px 20px;
 }
 
 .title{
 text-align:center;
-font-size:40px;
-margin-bottom:50px;
+font-size:36px;
+margin-bottom:40px;
 color:#3b2415;
 }
 
 /* ABOUT */
-
 .about{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:50px;
+gap:40px;
 align-items:center;
 }
 
 .about img{
 width:100%;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-transition:.4s;
-}
-
-.about img:hover{
-transform:scale(1.03);
+border-radius:15px;
 }
 
 /* FILTER */
-
 .filter{
 text-align:center;
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
 .filter button{
 padding:10px 18px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 margin:5px;
 cursor:pointer;
 background:#ddd;
 transition:.3s;
-font-weight:500;
 }
-
 .filter button.active,
 .filter button:hover{
 background:#c58b45;
@@ -338,205 +204,191 @@ font-weight:bold;
 margin-top:8px;
 }
 
-
 /* BOOKING */
+#booking{
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#booking .title{
+  font-size: 28px;
+  margin-bottom: 20px;
+}
 
 .booking{
-max-width:500px;
-margin:auto;
-background:#fff;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.1);
+  max-width: 400px;
+  margin: auto;
 }
 
 .booking input,
 .booking textarea{
-width:100%;
-padding:14px;
-margin-bottom:15px;
-border-radius:12px;
-border:1px solid #ddd;
-font-size:15px;
-outline:none;
-transition:.3s;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
 .booking input:focus,
 .booking textarea:focus{
-border-color:#c58b45;
-box-shadow:0 0 10px rgba(197,139,69,.3);
+  border-color: #c58b45;
+  box-shadow: 0 0 8px rgba(197,139,69,0.3);
 }
 
 .booking textarea{
-height:120px;
-resize:none;
+  min-height: 100px;
+  resize: none;
 }
 
-/* CONTACT */
+/* BUTTON */
+.btn{
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #c58b45, #e2b36a);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
 
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.btn:active{
+  transform: scale(0.98);
+}
+/* CONTACT */
 .contact{
 text-align:center;
 }
 
-.contact p{
-margin:10px 0;
-font-size:16px;
-}
-
 iframe{
 width:100%;
-height:350px;
-border:none;
-border-radius:18px;
-margin-top:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+height:320px;
+border:0;
+border-radius:12px;
+margin-top:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
 }
 
 /* FLOAT BUTTON */
-
 .float{
 position:fixed;
-right:20px;
 bottom:20px;
+right:20px;
 display:flex;
 flex-direction:column;
-gap:12px;
-z-index:999;
+gap:10px;
 }
 
 .float a{
 background:#c58b45;
-color:#fff;
-padding:14px 16px;
+color:white;
+padding:12px 15px;
 border-radius:50px;
 text-decoration:none;
 font-size:14px;
-box-shadow:0 8px 20px rgba(0,0,0,.2);
-transition:.3s;
-}
-
-.float a:hover{
-transform:scale(1.08);
+text-align:center;
 }
 
 /* FOOTER */
-
 footer{
-background:#1e120b;
-padding:25px;
 text-align:center;
-color:#fff;
-margin-top:50px;
+padding:20px;
+background:#1e120b;
+color:white;
+margin-top:40px;
 }
 
 /* MOBILE */
-
 @media(max-width:768px){
-
-nav{
-flex-direction:column;
-gap:10px;
-padding:15px;
+.hero h2{font-size:38px;}
+.about{grid-template-columns:1fr;}
+nav{flex-direction:column;}
 }
 
-.hero h2{
-font-size:42px;
+.hide{display:none;}
+/* NAVBAR */
+
+window.addEventListener("scroll",()=>{
+
+const nav=document.querySelector("nav");
+
+if(window.scrollY>80){
+nav.classList.add("scrolled");
+}else{
+nav.classList.remove("scrolled");
 }
 
-.about{
-grid-template-columns:1fr;
+});
+
+/* CARD ANIMATION */
+
+const cards=document.querySelectorAll(".card");
+
+function revealCards(){
+
+cards.forEach(card=>{
+
+const top=card.getBoundingClientRect().top;
+
+if(top < window.innerHeight-100){
+card.classList.add("show");
 }
 
-.title{
-font-size:32px;
-}
+});
 
 }
 
-/* HIDE */
+window.addEventListener("scroll",revealCards);
 
-.hide{
-display:none;
-}
-
+revealCards();
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING ICONS -->
-
-<div class="beans">
-<span>☕</span>
-<span>☕</span>
-<span>☕</span>
-<span>☕</span>
-<span>☕</span>
-<span>☕</span>
-</div>
-
 <!-- NAV -->
-
-<nav id="navbar">
-
+<nav>
 <h1>CF Toss</h1>
-
 <div>
 <a href="#about">Giới thiệu</a>
 <a href="#menu">Menu</a>
 <a href="#booking">Đặt bàn</a>
 <a href="#contact">Liên hệ</a>
 </div>
-
 </nav>
 
 <!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="steam"></div>
-<div class="steam s2"></div>
-<div class="steam s3"></div>
-
+<div class="hero">
+<div>
 <h2>☕ Coffee Toss</h2>
-
-<p>
-Cà phê phin Việt Nam – Đậm đà & hiện đại
-</p>
-
-<a href="#menu" class="btn">
-Khám phá menu
-</a>
-
+<p>Cà phê phin Việt Nam – Đậm đà & hiện đại</p>
+<a href="#menu" class="btn">Khám phá menu</a>
+</div>
 </div>
 
-</section>
-
 <!-- ABOUT -->
-
 <section id="about">
-
-<h2 class="title">
-Về Coffee Toss
-</h2>
+<h2 class="title">Về Coffee Toss</h2>
 
 <div class="about">
-
 <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
 
 <div>
-
 <p>
-Coffee Toss là quán cà phê phong cách hiện đại nhưng vẫn giữ trọn hương vị cà phê phin Việt Nam truyền thống.
-</p>
-
-<br>
-
-<p>
-Không gian yên tĩnh phù hợp học tập, làm việc và thư giãn.
+Coffee Toss là quán cà phê phong cách hiện đại nhưng giữ trọn hương vị cà phê phin Việt Nam truyền thống.
+Không gian yên tĩnh, phù hợp học tập – làm việc – thư giãn.
 </p>
 
 <br>
@@ -544,15 +396,10 @@ Không gian yên tĩnh phù hợp học tập, làm việc và thư giãn.
 <p>
 Mỗi ly cà phê là một khoảnh khắc chậm lại giữa cuộc sống vội vã.
 </p>
-
 </div>
 
 </div>
-
 </section>
-
-<!-- MENU -->
-
 
 <!-- MENU FILTER -->
 <section id="menu">
@@ -599,7 +446,7 @@ Mỗi ly cà phê là một khoảnh khắc chậm lại giữa cuộc sống v�
 <div class="card tea">
 <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87">
 <div class="card-content">
-<h3>Trà hoa quả</h3>
+<h3>Trà đào cam sả</h3>
 <p>Thanh mát tự nhiên</p>
 <div class="price">39.000đ</div>
 </div>
@@ -608,7 +455,7 @@ Mỗi ly cà phê là một khoảnh khắc chậm lại giữa cuộc sống v�
 <div class="card tea">
 <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e">
 <div class="card-content">
-<h3>Nước ép</h3>
+<h3>Trà chanh</h3>
 <p>Giải khát sảng khoái</p>
 <div class="price">25.000đ</div>
 </div>
@@ -637,143 +484,84 @@ Mỗi ly cà phê là một khoảnh khắc chậm lại giữa cuộc sống v�
 </section>
 
 <!-- BOOKING -->
-
 <section id="booking">
 
-<h2 class="title">
-Đặt bàn nhanh
-</h2>
+<h2 class="title">Đặt bàn nhanh</h2>
 
 <div class="booking">
 
 <input type="text" placeholder="Tên của bạn">
-
 <input type="tel" placeholder="Số điện thoại">
-
 <textarea placeholder="Ghi chú..."></textarea>
 
-<a href="https://zalo.me/0989098098" class="btn" target="_blank">
-Gửi yêu cầu
-</a>
+<br><br>
+
+<button class="btn" type="button">
+    Gửi yêu cầu
+</button>
 
 </div>
 
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact">
 
-<h2 class="title">
-Liên hệ
-</h2>
+<h2 class="title">Liên hệ</h2>
 
 <div class="contact">
 
-<p>📍 144 Xuân Thủy, Cầu Giấy, Hà Nội</p>
-
+<p>📍 Coffee Toss - 144 Xuân Thủy, Cầu Giấy, Hà Nội</p>
 <p>📞 0989098098</p>
-
 <p>🕒 07:00 – 22:00</p>
 
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8957756946384!2d105.77971787391395!3d21.03685588061443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4aaba35b15%3A0x67f4d40e3636c6ed!2zdHJvbmcga2h1w7RuIHZpw6puIHRyxrDhu51uZywgxJDhuqFpIGjhu41jIFF14buRYyBnaWEgSMOgIE7hu5lpLzE0NCDEkC4gWHXDom4gVGjhu6d5LCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSAxMDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1780229005207!5m2!1svi!2s"
-allowfullscreen=""
-loading="lazy">
-</iframe>
+ <div class="map-container">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8957756946384!2d105.77971787391395!3d21.03685588061443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4aaba35b15%3A0x67f4d40e3636c6ed!2zdHJvbmcga2h1w7RuIHZpw6puIHRyxrDhu51uZywgxJDhuqFpIGjhu41jIFF14buRYyBnaWEgSMOgIE7hu5lpLzE0NCDEkC4gWHXDom4gVGjhu6d5LCBD4bqndSBHaeG6pXksIEjDoCBO4buZaSAxMDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1780229005207!5m2!1svi!2s"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
 
 </div>
 
 </section>
 
 <!-- FLOAT -->
-
 <div class="float">
-
-<a href="tel:0989098098">
-📞 Gọi
+<a href="tel:0989098098">📞 Gọi</a>
+<a href="https://zalo.me/0989098098" target="_blank"> 💬Zalo
 </a>
-
-<a href="https://zalo.me/0989098098" target="_blank">
-💬 Zalo
-</a>
-
 </div>
 
 <!-- FOOTER -->
-
 <footer>
-2026 Coffee Toss ☕
+2026 Coffee Toss
 </footer>
 
 <script>
 
-/* FILTER */
+function filterMenu(type){
+let cards = document.querySelectorAll('.card');
+let buttons = document.querySelectorAll('.filter button');
 
-function filterMenu(type,event){
-
-let cards=document.querySelectorAll('.card');
-let buttons=document.querySelectorAll('.filter button');
-
-buttons.forEach(btn=>{
-btn.classList.remove('active');
-});
-
+buttons.forEach(b=>b.classList.remove('active'));
 event.target.classList.add('active');
 
 cards.forEach(card=>{
-
-if(type==='all'){
+if(type=='all'){
 card.classList.remove('hide');
 }else{
-card.classList.toggle(
-'hide',
-!card.classList.contains(type)
-);
+card.classList.toggle('hide', !card.classList.contains(type));
 }
-
 });
-
 }
-
-/* NAVBAR */
-
-window.addEventListener('scroll',()=>{
-
-const nav=document.getElementById('navbar');
-
-if(window.scrollY>80){
-nav.classList.add('scrolled');
-}else{
-nav.classList.remove('scrolled');
-}
-
-});
-
-/* SCROLL ANIMATION */
-
-const cards=document.querySelectorAll('.card');
-
-function revealCards(){
-
-cards.forEach(card=>{
-
-const top=card.getBoundingClientRect().top;
-
-if(top<window.innerHeight-80){
-card.classList.add('show');
-}
-
-});
-
-}
-
-window.addEventListener('scroll',revealCards);
-
-revealCards();
 
 </script>
 
 </body>
 </html>
-
